@@ -21,8 +21,12 @@ app.use(errorHandler);
 const authEndpoints = require("./endpoints/authEndpoints");
 app.use("/a",authEndpoints);
 
-const secureEndpoints = require("./endpoints/secureEndpoints");
+const storeEndpoints = require("./endpoints/storeEndpoints");
+app.use("/stores",storeEndpoints);
 
+const orderEndpoints = require("./endpoints/orderEndpoints");
+const authMiddleware = require("./middleware/authMiddleware");
+app.use("/orders",authMiddleware,orderEndpoints)
 
 const port = process.env.PORT;
 app.listen(port,()=>{

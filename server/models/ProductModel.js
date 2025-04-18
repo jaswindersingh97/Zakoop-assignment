@@ -12,7 +12,8 @@ const productSchema = new mongoose.Schema({
     },
     StoreId:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Store'
+        ref:'Store',
+        index:true
     },
     createdAt: {
         type: Date,
