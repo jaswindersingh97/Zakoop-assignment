@@ -8,7 +8,7 @@
 .left{
     width: 50%;
     padding: 10px;
-    gap: 10px;
+    gap: 30px;
     display: flex;
     flex-direction: column;
 }

@@ -1,7 +1,11 @@
 import React from 'react'
 import styles from './styles.module.css'
 import ProductCard from './../../components/ProductCart'
+import {useParams} from 'react-router-dom';
+import {useCart} from './../../context/CartContext';
 function Products() {
+  const {storeId} = useParams();
+  const { addItem,  removeItem, getQuantity } = useCart();
   const products = [
     {
       id: 'p1',
@@ -34,7 +38,8 @@ function Products() {
       rating: 3.5
     }
   ];
-  
+
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -50,8 +55,13 @@ function Products() {
           image={product.image}
           description={product.description}
           price={product.price}
+          storeId={storeId}
+          quantity={getQuantity( storeId,product.id)}
+          onIncrement={() => addItem( storeId,product)}
+          onDecrement={() => removeItem( storeId,product.id)}
           />
-        ))}
+        ))
+        }
         </div>
         <div className={styles.right}></div>
       </div>

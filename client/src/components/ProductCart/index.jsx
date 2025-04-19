@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import productImage from './../../assets/images/productImage.jpg'
-function ProductCard({ id, name, image, description, price }) {
-  const [quantity, setQuantity] = useState(0);
-
-  const increaseQuantity = () => setQuantity((prev) => prev + 1);
-  const decreaseQuantity = () => {
-    if (quantity > 0) setQuantity((prev) => prev - 1);
-  };
-
+function ProductCard({ id, name, image, description, price , storeId ,quantity,onDecrement,onIncrement}) {
+  // const [quantity, setQuantity] = useState(0);
+  
+  // const onIncrement = () => setQuantity((prev) => prev + 1);
+  // const onDecrement = () => {
+  //   if (quantity > 0) setQuantity((prev) => prev - 1);
+  // };
   return (
     <div className={styles.container}>
       <img className={styles.productImage} 
@@ -26,16 +25,16 @@ function ProductCard({ id, name, image, description, price }) {
 
         <div className={styles.cartActions}>
           {quantity === 0 ? (
-            <button className={styles.addToCartBtn} onClick={increaseQuantity}>
+            <button className={styles.addToCartBtn} onClick={onIncrement}>
               Add to Cart
             </button>
           ) : (
             <div className={styles.quantityControls}>
-              <button onClick={decreaseQuantity} className={styles.controlBtn}>
+              <button onClick={onDecrement} className={styles.controlBtn}>
                 -
               </button>
               <span className={styles.quantity}>{quantity}</span>
-              <button onClick={increaseQuantity} className={styles.controlBtn}>
+              <button onClick={onIncrement} className={styles.controlBtn}>
                 +
               </button>
             </div>
