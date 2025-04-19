@@ -37,7 +37,7 @@ const login = async(req,res) =>{
         JWT_SECRET,
         {expiresIn:"8h"}
     );
-    res.status(200).json({token:token,message:"Login successfull", id:user._id});
+    res.status(200).json({token:token,message:"Login successfull", user:{name:user.name,  id:user._id ,email:user.email}});
 };
 
 module.exports = {
