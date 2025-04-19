@@ -1,0 +1,62 @@
+import React from 'react'
+import styles from './styles.module.css'
+import ProductCard from './../../components/ProductCart'
+function Products() {
+  const products = [
+    {
+      id: 'p1',
+      name: 'Fresh Apples',
+      description: 'Crisp and juicy apples from local farms.',
+      price: 120,
+      image: 'https://example.com/images/apples.jpg',
+      unit: 'kg',
+      storeId: 's1',
+      rating: 4.5
+    },
+    {
+      id: 'p2',
+      name: 'Organic Milk',
+      description: 'Pure cow milk, organically sourced.',
+      price: 60,
+      image: 'https://example.com/images/milk.jpg',
+      unit: 'litre',
+      storeId: 's1',
+      rating: 4
+    },
+    {
+      id: 'p3',
+      name: 'Brown Bread',
+      description: 'Whole grain healthy brown bread.',
+      price: 40,
+      image: 'https://example.com/images/bread.jpg',
+      unit: 'packet',
+      storeId: 's1',
+      rating: 3.5
+    }
+  ];
+  
+  return (
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h1>Products</h1>
+      </div>
+      <div className={styles.body}>
+        <div className={styles.left}>
+        {products?.map((product)=>(
+          <ProductCard 
+          key={product.id}
+          id={product.id}
+          name={product.name}
+          image={product.image}
+          description={product.description}
+          price={product.price}
+          />
+        ))}
+        </div>
+        <div className={styles.right}></div>
+      </div>
+    </div>
+  )
+}
+
+export default Products
