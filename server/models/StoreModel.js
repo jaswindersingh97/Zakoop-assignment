@@ -8,6 +8,13 @@ const storeSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    image: { 
+        type: String 
+    },
+    rating: {
+        type: Number,
+        default: 4.5 
+    }, 
     createdAt: {
         type: Date,
         default: Date.now,

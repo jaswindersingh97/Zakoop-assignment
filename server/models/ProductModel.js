@@ -15,6 +15,17 @@ const productSchema = new mongoose.Schema({
         ref:'Store',
         index:true
     },
+    image: { 
+        type: String 
+    },
+    unit: { 
+        type: String, 
+        enum: ['per kg', 'each', 'per dozen'],
+        default: "per kg" 
+    }, 
+    tags: [{ 
+        type: String 
+    }], // e.g., ["organic", "local"]
     createdAt: {
         type: Date,
         default: Date.now,
