@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import productImage from './../../assets/images/productImage.jpg'
-function ProductCard({ id, name, image, description, price , storeId ,quantity,onDecrement,onIncrement}) {
+function ProductCard({ id, name, image, description, price , storeId ,quantity,onDecrement,onIncrement,showButton=true}) {
   // const [quantity, setQuantity] = useState(0);
   
   // const onIncrement = () => setQuantity((prev) => prev + 1);
@@ -23,23 +23,27 @@ function ProductCard({ id, name, image, description, price , storeId ,quantity,o
         <p className={styles.productDescription}>{description}</p>
         <span className={styles.productPrice}>₹{price}</span>
 
-        <div className={styles.cartActions}>
-          {quantity === 0 ? (
-            <button className={styles.addToCartBtn} onClick={onIncrement}>
-              Add to Cart
-            </button>
-          ) : (
-            <div className={styles.quantityControls}>
-              <button onClick={onDecrement} className={styles.controlBtn}>
-                -
+        {showButton && (
+          <div className={styles.cartActions}>
+            {quantity === 0 ? (
+              <button className={styles.addToCartBtn} onClick={onIncrement}>
+                Add to Cart
               </button>
-              <span className={styles.quantity}>{quantity}</span>
-              <button onClick={onIncrement} className={styles.controlBtn}>
-                +
-              </button>
-            </div>
-          )}
-        </div>
+            ) : (
+              <div className={styles.quantityControls}>
+                <button onClick={onDecrement} className={styles.controlBtn}>
+                  -
+                </button>
+                <span className={styles.quantity}>{quantity}</span>
+                <button onClick={onIncrement} className={styles.controlBtn}>
+                  +
+                </button>
+              </div>
+            )}
+          </div>
+          )
+        }
+
       </div>
     </div>
   );

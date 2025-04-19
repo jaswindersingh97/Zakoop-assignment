@@ -10,6 +10,8 @@
 .list{
     color:#620fe7;
     font-weight: bold;
+    position: relative;
+
 }
 .list span{
     color: green;
@@ -28,3 +30,12 @@
     bottom: 10px;
     flex-direction: column;
 }
+.tooltip {
+    width: 300px;
+    position: absolute;
+    background-color: white;
+    z-index: 10;
+    top: 100%; /* position below the parent */
+    left: 0;
+  }
+  

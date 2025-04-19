@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import styles from './styles.module.css'
 import ProductCard from './../../components/ProductCart'
 import {useParams} from 'react-router-dom';
@@ -39,16 +39,32 @@ function Products() {
       rating: 3.5
     }
   ];
+  const [search, setSearch] = useState("");
 
+  const filteredProducts = products.filter(p =>
+    p.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1>Products</h1>
+        <h1>Explore Products</h1>
+        
+
       </div>
       <div className={styles.body}>
         <div className={styles.left}>
-        {products?.map((product)=>(
+        <div className={styles.searchfield}>
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className={styles.search}
+        />
+        </div>
+
+        {filteredProducts?.map((product)=>(
           <ProductCard 
           key={product.id}
           id={product.id}
