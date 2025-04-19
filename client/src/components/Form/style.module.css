@@ -5,6 +5,8 @@
   
   .formGroup {
     margin-bottom: 1rem;
+    flex-direction: column;
+    display: flex;
   }
   
   .label {
@@ -14,7 +16,7 @@
   .input {
     padding: 0.5rem;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
   }
   
   .error {

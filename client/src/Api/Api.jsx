@@ -29,6 +29,7 @@ const Api = async ({ endpoint, method = 'GET', data = {}, headers = {},includeTo
         if (error.response) {
             if (error.response.status === 401) {
                 localStorage.removeItem('token');
+                localStorage.removeItem('user');
                 toast.error("Session expired. Please log in again.");
                 window.location.href = '/login'; 
             } else {

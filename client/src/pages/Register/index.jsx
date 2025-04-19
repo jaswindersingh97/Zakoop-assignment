@@ -1,7 +1,9 @@
 import React from 'react'
 import {toast} from 'react-toastify';
+import {Link} from 'react-router-dom';
 import Form from './../../components/Form/Form';
 import Api from './../../Api/Api';
+import styles from './index.module.css'
 function Register() {
   const formFields = [
     {
@@ -40,7 +42,7 @@ function Register() {
   const handleSubmit = async(data) => {
     const {confirmPassword,...finalData}=data; 
     const response =await Api({
-      endpoint: "/register",
+      endpoint: "/a/register",
       method: "POST",
       data:finalData,
     });
@@ -49,8 +51,11 @@ function Register() {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
+    <h1>Register User</h1>
+    <div className={styles.form}>
     <Form fields={formFields} onSubmit={handleSubmit} buttonLabel={"Sign Up"}/>
+    </div>
     <p>or</p>
     <p>Already have an accout <mark><Link to={"/login"}>Login</Link></mark></p>
     </div>

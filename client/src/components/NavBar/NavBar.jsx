@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
-const Navbar = ({ isAuthenticated, user, onLogout }) => {
+const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token")
+  console.log(user)
   const toggleDropdown = () => setShowDropdown(!showDropdown);
-
+  const onLogout =() =>{
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+  }
+  const isAuthenticated = token && user;
   const getInitials = (name) => {
     return name
       .split(" ")
