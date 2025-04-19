@@ -1,0 +1,30 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    position: relative;
+}
+.list{
+    color:#620fe7;
+    font-weight: bold;
+}
+.list span{
+    color: green;
+}
+.button{
+    width: fit-content;
+    background-color: #620fe7;
+    color: honeydew;
+    align-self: center;
+}
+.footer{
+    
+    display: flex;
+    gap: 10px;
+    position: relative;
+    bottom: 10px;
+    flex-direction: column;
+}

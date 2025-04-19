@@ -3,6 +3,7 @@ import styles from './styles.module.css'
 import ProductCard from './../../components/ProductCart'
 import {useParams} from 'react-router-dom';
 import {useCart} from './../../context/CartContext';
+import BillSummary from '../../components/BillSummary/BillSummary';
 function Products() {
   const {storeId} = useParams();
   const { addItem,  removeItem, getQuantity } = useCart();
@@ -63,7 +64,9 @@ function Products() {
         ))
         }
         </div>
-        <div className={styles.right}></div>
+        <div className={styles.right}>
+          <BillSummary storeId={storeId}/>
+        </div>
       </div>
     </div>
   )

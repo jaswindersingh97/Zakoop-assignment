@@ -4,11 +4,21 @@
 }
 .body{
     display: flex;
+    justify-content: space-between;
 }
 .left{
-    width: 50%;
-    padding: 10px;
+    width: 60%;
     gap: 30px;
     display: flex;
+    min-width: 450px;
     flex-direction: column;
+}
+.right{
+    padding: 10px;
+    height: 450px;
+    min-width: 450px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }

@@ -36,21 +36,23 @@ export const CartProvider = ({ children }) => {
   const removeItem = (storeId, productId) => {
     setCart(prev => {
       const storeCart = { ...prev[storeId] };
-      if (!storeCart[productId]) return prev;
-
-      const newQty = storeCart[productId].quantity - 1;
+      const currentItem = storeCart[productId];
+      if (!currentItem) return prev;
+  
+      const newQty = currentItem.quantity - 1;
       if (newQty <= 0) {
         delete storeCart[productId];
       } else {
-        storeCart[productId].quantity = newQty;
+        storeCart[productId] = { ...currentItem, quantity: newQty };
       }
-
+  
       return {
         ...prev,
         [storeId]: storeCart,
       };
     });
   };
+  
 
   const clearStoreCart = (storeId) => {
     setCart(prev => {
