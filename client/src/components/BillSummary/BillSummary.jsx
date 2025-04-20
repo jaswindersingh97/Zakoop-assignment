@@ -4,12 +4,16 @@ import styles from './styles.module.css';
 import ProductCard from '../ProductCart';
 import Modal from '../Modal';
 import ConfirmOrderModal from '../Modal/ConfirmOrderModal';
+import { useNavigate } from 'react-router-dom';
 function BillSummary({ storeId }) {
   const { cart } = useCart();
   const storeCart = cart[storeId] || {};
   const [hoveredItem, setHoveredItem] = useState(null);
 
   const [modal,setModal] = useState(false);
+
+  const token = localStorage.getItem("token")
+  const navigate = useNavigate();
 
   const placeOrder = () =>{
     setModal(true)
@@ -59,7 +63,7 @@ function BillSummary({ storeId }) {
       </ul>
       <div className={styles.footer}>
         <h4>Total: ₹{total}</h4>
-        <button onClick={placeOrder} className={styles.button}>Place Order</button>
+        <button onClick={token? placeOrder :navigate("/login")} className={styles.button}>Place Order</button>
       </div>
       <Modal isOpen={modal} onClose={closeModal} children={<ConfirmOrderModal items={items} closeModal={closeModal} storeId={storeId} />}/>
     </div>
