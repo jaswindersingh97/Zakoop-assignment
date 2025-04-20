@@ -57,7 +57,7 @@ function Register() {
     <Form fields={formFields} onSubmit={handleSubmit} buttonLabel={"Sign Up"}/>
     </div>
     <p>or</p>
-    <p>Already have an accout <mark><Link to={"/login"}>Login</Link></mark></p>
+    <p>Already have an accout <h1><Link to={"/login"}>Login</Link></h1></p>
     </div>
   )
 }

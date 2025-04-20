@@ -44,7 +44,7 @@ function Login() {
     <Form fields={formFields} onSubmit={handleSubmit} buttonLabel={"Login"}/>
     </div>
     <p>or</p>
-    <p>Don't have an account<mark><Link to={"/register"}>Login</Link></mark></p>
+    <p>Don't have an account <h1><Link to={"/register"}>Sign up</Link></h1></p>
     </div>
   )
 }
