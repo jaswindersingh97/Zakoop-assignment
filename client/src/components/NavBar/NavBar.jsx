@@ -7,7 +7,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token")
-  console.log(user)
   const toggleDropdown = () => setShowDropdown(!showDropdown);
   const onLogout =() =>{
     localStorage.removeItem("token");
@@ -36,7 +35,7 @@ const Navbar = () => {
         {isAuthenticated && (
           <>
             <Link to="/orders">Orders</Link>
-            <Link to="/cart">Cart</Link>
+            {/* <Link to="/cart">Cart</Link> */}
             <div className={styles.profile} onClick={toggleDropdown}>
               <div className={styles.initials}>{getInitials(user?.name)}</div>
               {showDropdown && (

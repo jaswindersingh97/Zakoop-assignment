@@ -10,6 +10,7 @@ import Order from './pages/Order';
 import Cart from './pages/Cart';
 import { ToastContainer } from 'react-toastify';
 import ProtectedRoutes from './components/ProtectedRoute/ProtectedRoute';
+import ThankYouModal from './pages/ThankYouModal';
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
         <Route path='/orders' element={<ProtectedRoutes element={<Orders/>} isPublic={false}/>}/>
         <Route path='/orders/:orderId' element={<Order/>}/>
         <Route path='/cart' element={<Cart/>}/>
+        <Route path='/thankyou' element={<ThankYouModal/>}/>
       </Route>  
       </Routes>
     </BrowserRouter>

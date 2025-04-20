@@ -1,16 +1,20 @@
 import React from 'react';
 import { useCreateOrder } from '../../../hooks/Orders';
 import { toast } from 'react-toastify';
-
-function ConfirmOrderModal({ items = [], closeModal }) {
+import { useCart } from '../../../context/CartContext';
+import { useNavigate } from 'react-router-dom';
+function ConfirmOrderModal({ items = [], closeModal ,storeId}) {
   const { mutate, isPending } = useCreateOrder();
-
+  const {clearStoreCart} = useCart();
+  const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
     mutate(items, {
       onSuccess: () => {
         toast.success('Order made successfully');
+        clearStoreCart(storeId)
         closeModal();
+        navigate("/thankyou")
       },
       onError: () => {
         toast.error('Failed to place order');

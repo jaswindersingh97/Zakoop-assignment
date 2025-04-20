@@ -61,7 +61,7 @@ function BillSummary({ storeId }) {
         <h4>Total: ₹{total}</h4>
         <button onClick={placeOrder} className={styles.button}>Place Order</button>
       </div>
-      <Modal isOpen={modal} onClose={closeModal} children={<ConfirmOrderModal items={items} closeModal={closeModal}/>}/>
+      <Modal isOpen={modal} onClose={closeModal} children={<ConfirmOrderModal items={items} closeModal={closeModal} storeId={storeId} />}/>
     </div>
   );
 }
