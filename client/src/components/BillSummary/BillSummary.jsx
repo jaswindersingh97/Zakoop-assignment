@@ -5,6 +5,7 @@ import ProductCard from '../ProductCart';
 import Modal from '../Modal';
 import ConfirmOrderModal from '../Modal/ConfirmOrderModal';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 function BillSummary({ storeId }) {
   const { cart } = useCart();
   const storeCart = cart[storeId] || {};
@@ -13,8 +14,12 @@ function BillSummary({ storeId }) {
   const [modal,setModal] = useState(false);
 
   const token = localStorage.getItem("token")
+  console.log(token)
   const navigate = useNavigate();
-
+  const navigateToLogin = () =>{
+    toast.success("Kindly login first")
+    navigate("/login")
+  }
   const placeOrder = () =>{
     setModal(true)
   }
@@ -63,7 +68,7 @@ function BillSummary({ storeId }) {
       </ul>
       <div className={styles.footer}>
         <h4>Total: ₹{total}</h4>
-        <button onClick={token? placeOrder :navigate("/login")} className={styles.button}>Place Order</button>
+        <button onClick={token? placeOrder :navigateToLogin} className={styles.button}>Place Order</button>
       </div>
       <Modal isOpen={modal} onClose={closeModal} children={<ConfirmOrderModal items={items} closeModal={closeModal} storeId={storeId} />}/>
     </div>
