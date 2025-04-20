@@ -22,12 +22,12 @@ export const CartProvider = ({ children }) => {
   const addItem = (storeId, product) => {
     setCart(prev => {
       const storeCart = prev[storeId] || {};
-      const quantity = storeCart[product.id]?.quantity || 0;
+      const quantity = storeCart[product._id]?.quantity || 0;
       return {
         ...prev,
         [storeId]: {
           ...storeCart,
-          [product.id]: { ...product, quantity: quantity + 1 },
+          [product._id]: { ...product, quantity: quantity + 1 },
         },
       };
     });

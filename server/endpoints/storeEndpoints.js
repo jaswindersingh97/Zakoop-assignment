@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router();
+const router = express.Router({mergeParams: true});
 
 const {getStores} = require("./../controllers/storeControllers.js");
 const productEndpoints = require("./productEndpoints.js");

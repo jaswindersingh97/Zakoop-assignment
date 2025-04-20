@@ -18,6 +18,9 @@ app.use(morgan('dev'));
 const errorHandler = require("./middleware/errorHandler");
 app.use(errorHandler);
 
+const {createDummyData} = require("./controllers/dummyDataControllers");
+app.get("/dummy-data",createDummyData);
+
 const authEndpoints = require("./endpoints/authEndpoints");
 app.use("/a",authEndpoints);
 

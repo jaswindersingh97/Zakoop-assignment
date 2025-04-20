@@ -2,14 +2,24 @@ import React, { useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import styles from './styles.module.css';
 import ProductCard from '../ProductCart';
-
+import Modal from '../Modal';
+import ConfirmOrderModal from '../Modal/ConfirmOrderModal';
 function BillSummary({ storeId }) {
   const { cart } = useCart();
   const storeCart = cart[storeId] || {};
   const [hoveredItem, setHoveredItem] = useState(null);
 
+  const [modal,setModal] = useState(false);
+
+  const placeOrder = () =>{
+    setModal(true)
+  }
+  const closeModal = () =>{
+    setModal(false)
+  }
+
   const items = Object.values(storeCart);
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = items.reduce((sum, item) => sum + item.Price * item.quantity, 0);
 
   if (items.length <= 0) {
     return (
@@ -25,20 +35,20 @@ function BillSummary({ storeId }) {
       <ul>
         {items.map(item => (
           <li
-            key={item.id}
+            key={item._id}
             className={styles.list}
             onMouseEnter={() => setHoveredItem(item)}
             onMouseLeave={() => setHoveredItem(null)}
           >
-            {item.name} - <span>{item.quantity} × ₹{item.price} = ₹{item.quantity * item.price}</span>
-            {hoveredItem?.id === item.id && (
+            {item.name} - <span>{item.quantity} × ₹{item.Price} = ₹{item.quantity * item.Price}</span>
+            {hoveredItem?._id === item._id && (
               <div className={styles.tooltip}>
                 <ProductCard 
-                id ={item.id}
+                id ={item._id}
                 name ={item.name}
                 image ={item.image}
                 description ={item.description}
-                price  ={item.price}
+                price  ={item.Price}
                 storeId ={item.storeId}
                 showButton={false}
                  />
@@ -49,8 +59,9 @@ function BillSummary({ storeId }) {
       </ul>
       <div className={styles.footer}>
         <h4>Total: ₹{total}</h4>
-        <button className={styles.button}>Place Order</button>
+        <button onClick={placeOrder} className={styles.button}>Place Order</button>
       </div>
+      <Modal isOpen={modal} onClose={closeModal} children={<ConfirmOrderModal items={items} closeModal={closeModal}/>}/>
     </div>
   );
 }
