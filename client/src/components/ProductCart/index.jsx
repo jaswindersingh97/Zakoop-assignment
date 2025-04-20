@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
-import productImage from './../../assets/images/storeimage.jpg'
+import productImage from './../../assets/images/Image-not-found.png'
 function ProductCard({ id, name, image, description, price , storeId ,quantity,onDecrement,onIncrement,showButton=true}) {
   // const [quantity, setQuantity] = useState(0);
   

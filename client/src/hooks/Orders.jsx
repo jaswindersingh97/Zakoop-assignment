@@ -14,7 +14,6 @@ export const useOrders = () => {
   return useQuery({
     queryKey: ['orders'],
     queryFn: fetchOrders,
-    staleTime: 60 * 60 * 1000,
   });
 };
 

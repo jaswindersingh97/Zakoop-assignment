@@ -6,7 +6,6 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Products from './pages/Products';
 import Orders from './pages/Orders';
-import Order from './pages/Order';
 import Cart from './pages/Cart';
 import { ToastContainer } from 'react-toastify';
 import ProtectedRoutes from './components/ProtectedRoute/ProtectedRoute';
@@ -23,7 +22,6 @@ function App() {
         <Route path='/' element={<Stores/>}/>
         <Route path='/:storeId/products' element={<Products/>}/>
         <Route path='/orders' element={<ProtectedRoutes element={<Orders/>} isPublic={false}/>}/>
-        <Route path='/orders/:orderId' element={<Order/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/thankyou' element={<ThankYouModal/>}/>
       </Route>  
