@@ -2,7 +2,6 @@ import styles from './index.module.css';
 import React from 'react'
 
 function Modal({ isOpen, onClose, children }) {
-    console.log(isOpen)
     if (!isOpen) return null;
     const light = {background:'white', color:'#18181B'}
   return (

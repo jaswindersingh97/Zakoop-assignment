@@ -13,6 +13,7 @@ const { data: stores, isLoading } = useStores();
       <div className={styles.body}>
         {stores?.map((store)=>(
           <StoreCard
+            key={store._id}
             name={store.name}
             location={store.location}
             image={store.image}

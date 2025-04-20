@@ -21,7 +21,8 @@ const schemas ={
                   Product: Joi.string().hex().length(24).required(),
                   qty: Joi.number().integer().min(1).required()
                 })
-              ).min(1).required()
+              ).min(1).required(),
+            storeId:   Joi.string().hex().length(24).required()
         })
     }    
 

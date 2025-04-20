@@ -2,10 +2,10 @@ const asyncHandler = require("express-async-handler");
 const Order = require("./../models/OrderModel");
 const createOrder = async(req,res) =>{
     const {userId} = req.user;
-    const {items} = req.body;
+    const {items,storeId} = req.body;
 
     const response = await Order.create({
-        userId,items
+        userId,items,storeId
     });
 
     res.status(201).json({response,message:"Order created successfully"});
@@ -14,7 +14,9 @@ const createOrder = async(req,res) =>{
 
 const getOrders = async(req,res)=>{
     const {userId} = req.user;
-    const response = await Order.find({userId}).populate('items.Product');
+    const response = await Order.find({userId})
+                                            .populate('storeId')
+                                            .populate('items.Product');
 
     res.status(200).json({response})
 }

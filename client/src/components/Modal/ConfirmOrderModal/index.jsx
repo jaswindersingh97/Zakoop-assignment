@@ -9,7 +9,7 @@ function ConfirmOrderModal({ items = [], closeModal ,storeId}) {
   const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
-    mutate(items, {
+    mutate({items,storeId}, {
       onSuccess: () => {
         toast.success('Order made successfully');
         clearStoreCart(storeId)

@@ -18,7 +18,7 @@ export const useOrders = () => {
   });
 };
 
-const createOrder = async (items) => {
+const createOrder = async ({items,storeId}) => {
   const transformedItems = items.map(item => ({
     Product: item._id || item.id, // depends on your product model
     qty: item.quantity,
@@ -26,7 +26,7 @@ const createOrder = async (items) => {
 
   const { data } = await Api({
     endpoint: '/orders',
-    data: {items: transformedItems },
+    data: {items: transformedItems ,storeId},
     method: 'post',
     includeToken: true,
   });
